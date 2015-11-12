@@ -1,0 +1,5 @@
+TODO:
+- Show how to compile Green-Marl-mod_base_1
+- Show how to compile scc-par (and link everything together)
+- Show how to run an experiment
+- Provide an example
