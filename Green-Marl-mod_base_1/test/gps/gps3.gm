@@ -1,0 +1,14 @@
+Procedure gps3 (G: Graph, x: Int, A:Node_Property<Int>(G) ) : Int
+{
+    Int z = 0;
+    Int h = x;
+
+    // test of do-while and sequential operation
+    Do {
+        z = Sum(t: G.Nodes) {t.A};
+        h = h+1;
+    }
+    While (h <= 0) ;
+
+    Return z;
+}

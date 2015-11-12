@@ -1,0 +1,95 @@
+1 Introduction
+================================
+The scc-par parallel strongly connected components (SCC) algorithm [1] computes
+all strongly connected components on a given input graph. It is optimized for 
+small-world graphs, which are characterized by a low diameter and a large 
+strongly-connected component on the order of the number of nodes. 
+
+The C++ codes in scc-par assume the following libraries:
+
+  * g++ (with builtin atomic functions)
+  * g++ (with OpenMP support)
+  * a custom graph library and runtime (gm_graph) 
+
+The first two are supported by any recent g++ distributions (version 4.2 or higher); 
+the third one is included in this source package.
+
+2 Source Package
+================================
+The source code of scc-par is available as a zip file from:
+
+    http://www.stanford.edu/~nrodia
+
+It includes three main directories:
+
+  * gm_graph -- the custom graph library and runtime
+  * src -- the parallel SCC algorithm source files
+  * tools -- the graph dataset format conversion tool
+
+3 Compiling and Executing
+================================
+Compile the gm_graph runtime library and the scc binary by running make in the 
+top-level directory. 
+
+To execute scc-par, in the top-level directory, run:
+
+./scc <graph_name> <num_threads> <method> {-d|-a|-p}
+
+Calling ./scc with no input parameters will print the help, which describes
+all of the options. 
+
+Also included is a graph conversion utility to convert adjacency list or edge list
+graph files into the binary format used by scc-par. To use this utility, you
+will first need to download and install Green-Marl, available at:
+    http://github.com/stanford-ppl/Green-Marl/
+
+In the Makefile in the tools directory, set GM_TOP to the top-level Green-Marl
+directory. To compile and print the help 
+message for the conversion program, in the tools directory:
+
+make
+./convert -?
+
+4 License
+================================
+Copyright (c) 2013 Stanford University, unless otherwise specified.
+All rights reserved.
+
+This software was developed by the Pervasive Parallelism Laboratory of
+Stanford University, California, USA.
+
+Permission to use, copy, modify, and distribute this software in source
+or binary form for any purpose with or without fee is hereby granted,
+provided that the following conditions are met:
+
+   1. Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+
+   2. Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+
+   3. Neither the name of Stanford University nor the names of its
+      contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+
+THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.
+
+5 Reference
+================================
+Please cite the following paper when referencing this code.
+
+[1] S. Hong, N. C. Rodia, and K. Oluktoun, "On fast parallel detection of strongly
+connected components (scc) in small-world graphs," SC 2013.
+

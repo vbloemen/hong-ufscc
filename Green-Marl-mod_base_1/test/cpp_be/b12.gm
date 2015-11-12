@@ -1,0 +1,34 @@
+// Test of argmin=
+Proc b12_1(G: Graph, A,B: N_P<Int>(G))
+{
+    Foreach(n:G.Nodes)
+    {
+        Int x=0; 
+        Node(G) m;
+        Foreach(t:n.Nbrs)(t.A > 0) 
+        {
+            <x;m> min= <t.A; t>;   // This should be optimized as normal if-check and update
+        }
+    }
+}
+
+Proc b12_2(G: Graph, A,B,C: N_P<Int>(G))
+{
+    Foreach(n:G.Nodes)
+    {
+        Foreach(t:n.Nbrs)
+        {
+            <t.A;t.B> min= <n.C+1; n.C*2>;    // Should be implemented as test and test-set
+        }
+    }
+}
+
+Proc b12_3(G: Graph, A: N_P<Int>(G))
+{
+    Int x;
+    Node(G) m;
+    Foreach(n:G.Nodes)
+    {
+        <x;m> min= <n.A; n>;    // Should be implemented with privitization
+    }
+}

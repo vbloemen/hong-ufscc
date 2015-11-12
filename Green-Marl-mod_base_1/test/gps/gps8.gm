@@ -1,0 +1,20 @@
+
+// Test of message congurence 2
+// There should be no 'type' if every messge is congruent
+Proc gps8(G: Graph, b: Bool)
+{
+    Node_Prop<Int>(G) A,B;
+    Foreach(n: G.Nodes)
+    {
+        Foreach(t: n.Nbrs) {
+            t.B += n.A;  // Int
+        }
+    }
+
+    Foreach(n: G.Nodes)
+    {
+        Foreach(t: n.Nbrs) {
+            t.A *=  n.B;   // Int
+        }
+    }
+}
