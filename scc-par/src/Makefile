@@ -6,8 +6,8 @@ INCDIR = ../gm_graph/inc
 LIBDIR = ../gm_graph/lib
 OUTDIR = ./
 LIB = gmgraph
-LFLAGS = -L$(LIBDIR) -l$(LIB) -lprofiler
-CFLAGS = -O3 -g -I. -I$(INCDIR) -I/home/s1004611/install/include -fopenmp  -std=gnu++0x
+LFLAGS = -L$(LIBDIR) -l$(LIB)
+CFLAGS = -O3 -g -I. -I$(INCDIR) -fopenmp  -std=gnu++0x
 INCFILES = $(shell ls $(INCDIR))
 H_FILES = $(addprefix $(INCDIR)/, $(INCFILES))
 
