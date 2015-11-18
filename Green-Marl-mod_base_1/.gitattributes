@@ -1,3 +1,0 @@
-src/parse/gm_grammer.output -diff
-src/parse/gm_lex.c -diff
-src/parse/gm_grammer.tab.c -diff

@@ -1,7 +1,0 @@
-Procedure b41_test_map_get_element_multiple_graphs(G:Graph)
-{
-	Graph G2;
-	Map<Node(G), Node(G2)> map;
-	Node(G) n;
-	Node(G2) m = map[n];
-}

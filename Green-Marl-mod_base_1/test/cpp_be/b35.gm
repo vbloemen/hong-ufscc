@@ -1,5 +1,0 @@
-Procedure b35_test_pickrandomnbr(G:Graph)
-{
-    Node n;
-    Node m = n.PickRandomNbr();
-}
