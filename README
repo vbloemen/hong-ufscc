@@ -1,3 +1,12 @@
+0 Additional notes for the UFSCC extension
+================================
+The UFSCC algorithm has been implemented in the tool provided by Hong et al. [1].
+The source code for this updated tool is available at:
+
+    https://github.com/vbloemen/hong-ufscc
+
+The installation procedure remains the same.
+
 1 Introduction
 ================================
 The scc-par parallel strongly connected components (SCC) algorithm [1] computes
