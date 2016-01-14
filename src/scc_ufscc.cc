@@ -19,6 +19,7 @@ class uf_stack_array {
         uf_stack_array(int max_sz) {
             stack = new int32_t[max_sz];
             stack_ptr = 0;
+            max_stack = 0;
         }
         virtual ~uf_stack_array() { delete [] stack;}
 
@@ -26,15 +27,20 @@ class uf_stack_array {
     inline void push(node_t n) {
         stack[stack_ptr] = n;
         stack_ptr ++;
+        if (stack_ptr > max_stack) {
+            max_stack = stack_ptr;
+        }
     }
     inline int size()   {return stack_ptr;}
     inline node_t top() {return stack[stack_ptr-1];}
     inline void pop()   {stack_ptr--;}
     inline bool empty() {return (stack_ptr == 0);}
     int32_t* get_ptr()  {return stack;}
+    int32_t get_max_stack() {return max_stack;}
 private:
     int32_t* stack;
     int32_t stack_ptr;
+    int32_t max_stack;
 };
 
 
@@ -91,6 +97,7 @@ struct stats_counter {
     int n_unique_states;
     int n_unique_trans;
     int n_initial_states;
+    int n_max_stack;
 };
 
 
@@ -522,6 +529,7 @@ void finalize_ufscc ()
         printf("- claim dead count:       %10d\n", global_c->n_claim_dead);
         printf("- claim found count:      %10d\n", global_c->n_claim_found);
         printf("- claim success count:    %10d\n", global_c->n_claim_success);
+        printf("- cum. max stack depth:   %10d\n", global_c->n_max_stack);
     }
     delete uf;
 }
@@ -641,6 +649,7 @@ backtrack:
         goto end_recursion;
     }
 
+    cnt->n_max_stack = roots.get_max_stack();
 }
 
 
@@ -683,6 +692,7 @@ void do_ufscc_all (gm_graph& G)
             global_c->n_claim_dead      += local_c->n_claim_dead;
             global_c->n_claim_found     += local_c->n_claim_found;
             global_c->n_claim_success   += local_c->n_claim_success;
+            global_c->n_max_stack       += local_c->n_max_stack;
         }
 
         delete roots_stack;
